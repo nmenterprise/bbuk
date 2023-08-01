@@ -6,8 +6,8 @@ from .models import Profile, Transactions
 
 
 def dashboard_view(request):
-    transactions = Transactions.objects.all()
-    profiles = Profile.objects.all()
+    transactions = Transactions.objects.filter(user=request.user)
+    profiles = Profile.objects.filter(user=request.user)
     context = {
         'transactions': transactions,
         'profiles': profiles}
